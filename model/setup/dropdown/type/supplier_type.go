@@ -1,0 +1,19 @@
+package model
+
+import (
+	"fmt"
+
+	"glpi/model"
+
+	pkgmodel "github.com/forbearing/golib/model"
+)
+
+func init() {
+	pkgmodel.Register[*SupplierType]()
+}
+
+type SupplierType struct{ model.NameEntity }
+
+func (*SupplierType) GetTableName() string {
+	return fmt.Sprintf("%s_%s", model.PREFIX_DROPDOWN, pkgmodel.GetTableName[*SupplierType]())
+}
