@@ -38,7 +38,7 @@ import (
 func main() {
 	util.RunOrDie(bootstrap.Bootstrap)
 
-	asset := router.API.Group("/asset")
+	asset := router.API().Group("/asset")
 	router.Register[*model_asset.Computer](asset, "/computer")
 	router.Register[*model_asset.Monitor](asset, "/monitor")
 	router.Register[*model_asset.Software](asset, "/software")
@@ -56,7 +56,7 @@ func main() {
 	router.Register[*model_asset.Cable](asset, "/cable")
 	router.Register[*model_asset.DeviceSimcard](asset, "/device_simcard")
 
-	assistance := router.API.Group("/assistance")
+	assistance := router.API().Group("/assistance")
 	router.Register[*model_assist.Ticket](assistance, "/ticket")
 	router.Register[*model_assist.Problem](assistance, "/problem")
 	router.Register[*model_assist.Change](assistance, "/change")
@@ -64,7 +64,7 @@ func main() {
 	router.Register[*model_assist.TicketRecurrent](assistance, "/ticket_recurrent")
 	router.Register[*model_assist.ChangeRecurrent](assistance, "/change_recurrent")
 
-	management := router.API.Group("/management")
+	management := router.API().Group("/management")
 	router.Register[*model_mgmt.SoftwareLicense](management, "/software_license")
 	router.Register[*model_mgmt.Budget](management, "/budget")
 	router.Register[*model_mgmt.Supplier](management, "/supplier")
@@ -79,7 +79,7 @@ func main() {
 	router.Register[*model_mgmt.Appliance](management, "/appliance")
 	router.Register[*model_mgmt.Database](management, "/database")
 
-	tool := router.API.Group("/tool")
+	tool := router.API().Group("/tool")
 	router.Register[*model_tool.Project](tool, "/project")
 	router.Register[*model_tool.Reminder](tool, "/reminder")
 	router.Register[*model_tool.RSSFeed](tool, "/rss_feed")
@@ -87,7 +87,7 @@ func main() {
 	router.Register[*model_tool.Reservation](tool, "/reservation")
 	router.Register[*model_tool.SavedSearch](tool, "/saved_search")
 
-	admin := router.API.Group("/admin")
+	admin := router.API().Group("/admin")
 	router.Register[*model_admin.User](admin, "/user")
 	router.Register[*model_admin.Group](admin, "/group")
 	router.Register[*model_admin.Entity](admin, "/entity")
@@ -98,9 +98,9 @@ func main() {
 	router.Register[*model_admin.Log](admin, "/log")
 	router.Register[*model_admin.Inventory](admin, "/inventory")
 
-	setup := router.API.Group("/setup")
+	setup := router.API().Group("/setup")
 	dropdown := setup.Group("/dropdown")
-	component := router.API.Group("/component")
+	component := router.API().Group("/component")
 
 	router.Register[*model_dropdown_common.Location](dropdown, "/location")
 	router.Register[*model_dropdown_common.Status](dropdown, "/status")
